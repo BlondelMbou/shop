@@ -1,14 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+// import data from './data';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import HomeScreen from './screens/HomeScreen';
+import ProductScreen from './screens/ProductScreen';
 
 function App() {
   return (
-    <div>
-      <header>
-        <a href="/">Shopping</a>
-      </header>
-      <main>product list</main>
-    </div>
+    <BrowserRouter>
+      <div>
+        <header>
+          <Link to="/">
+            <h3>Shopping</h3>
+          </Link>
+        </header>
+        <main>
+          <Routes>
+            <Route path="/product/:slug" element={<ProductScreen />} />
+            <Route path="/" element={<HomeScreen />} />
+          </Routes>
+        </main>
+      </div>
+    </BrowserRouter>
   );
 }
 
